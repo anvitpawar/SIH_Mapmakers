@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Zoom : MonoBehaviour
+{
+    public Camera mainCamera; 
+    public float zoomSpeed = 1.0f;
+    public float minZoom = 1.0f; 
+    public float maxZoom = 10.0f; 
+    private float currentZoom = 1.0f; 
+
+    void Update()
+    {
+      
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentZoom -= zoomSpeed;
+            currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+            mainCamera.fieldOfView = currentZoom;
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            currentZoom += zoomSpeed;
+            currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+            mainCamera.fieldOfView = currentZoom;
+        }
+
+        
+    }
+}
+    
